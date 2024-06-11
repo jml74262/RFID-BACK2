@@ -207,7 +207,7 @@ public class PrinterController : ControllerBase
             ^FO40,265^GB250,80,6^FS // 4:1
             ^FO60,295^A0N,30,22^FDEMPACADORA/TURNO^FS
             ^FO285,265^GB915,80,6^FS // 4:2
-            ^FO300,295^A0N,30,30^FD{postRFIDLabeldto.ClaveOperador} - {postRFIDLabeldto.Operador} / {postRFIDLabeldto.Turno}^FS
+            ^FO300,295^A0N,30,30^FD{postRFIDLabeldto.Operador} / {postRFIDLabeldto.Turno}^FS
             ^FO40,340^GB500,100,6^FS // 5:1
             ^FO60,375^A0N,30,30^FDPESO BRUTO(KG)^FS
             ^FO40,340^GB250,100,6^FS // 5:2
