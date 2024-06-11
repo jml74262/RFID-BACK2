@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 using PrinterBackEnd.Data;
 using PrinterBackEnd.Models;
@@ -33,6 +34,17 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod()
                .AllowCredentials();
     });
+});
+
+// Increase request size limits
+builder.Services.Configure<IISServerOptions>(options =>
+{
+    options.MaxRequestBodySize = 104857600; // 100 MB
+});
+
+builder.Services.Configure<KestrelServerOptions>(options =>
+{
+    options.Limits.MaxRequestBodySize = 104857600; // 100 MB
 });
 
 // Add controllers

@@ -101,10 +101,16 @@ namespace PrinterBackEnd.Models
 
             byte[] cmddata = UtilsPersonalized.StringToByteArray(ControlCharReplace(command));
             List<InfoConx> list = GetSATODrivers();
-            InfoConx infoConx = list.FirstOrDefault(x => x.Online);
+            // If list is empty, return false
+            if (list.Count == 0)
+            {
+                return false;
+            }
+
+            InfoConx infoConx = list.FirstOrDefault(x => x.Online && x.PortName.Contains("USB"));
             if (infoConx != null)
             {
-                //SendRawData(infoConx.DriverName, );
+                SendRawData(infoConx.DriverName, cmddata);
                 return true;
             }
             return false;
@@ -161,12 +167,12 @@ namespace PrinterBackEnd.Models
 
 
 
-        public bool SendRawData(string DriverName, string Data)
+        public static bool SendRawData(string DriverName, string Data)
         {
             return RawPrinterHelper.SendStringToPrinter(DriverName, Data);
         }
 
-        public bool SendRawData(string DriverName, byte[] Data)
+        public static bool SendRawData(string DriverName, byte[] Data)
         {
             IntPtr intPtr = new IntPtr(0);
             int num = Data.Length;
