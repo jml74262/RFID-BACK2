@@ -24,7 +24,7 @@ namespace PrinterBackEnd.Controllers
             try
             {
                 // Get all the operators from the 'Cat_Operadores' table where 'IdArea' and 'IdTurno' match 'IdArea' and 'IdTurno'
-                var operators = await _context.Cat_Operadores.Where(o => o.Id_Area == IdArea && o.Id_Turno == IdTurno).ToListAsync();
+                var operators = await _context.Cat_Operadores.Where(o => o.Id_Area == IdArea).ToListAsync();
                 return Ok(operators);
             }
             catch (Exception e)
