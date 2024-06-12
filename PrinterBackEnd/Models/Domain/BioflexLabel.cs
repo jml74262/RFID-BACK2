@@ -41,10 +41,11 @@
     public class CatOrden
     {
         public int Id { get; set; }
-        public string Orden { get; set; }
-        public string ClaveProducto { get; set; }
-        public string Producto { get; set; }
-        public string UltimoProceso { get; set; }
+        public int? Orden { get; set; }
+        public string? ClaveProducto { get; set; }
+        public string? Producto { get; set; }
+        public string? UltimoProceso { get; set; }
+        public int? Pedido { get; set; }
     }
 
     public class CatProducto

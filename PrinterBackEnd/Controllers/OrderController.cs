@@ -30,7 +30,8 @@ namespace PrinterBackEnd.Controllers
                     .Select(x => new OrderNumberResponse
                     {
                         Id = x.Id,
-                        Orden = x.Orden
+                        //parse order number to string, if null return empty string
+                        Orden = x.Orden ?? 0,
                     })
                     .ToListAsync();
                 return Ok(order);
@@ -49,6 +50,12 @@ namespace PrinterBackEnd.Controllers
             {
                 // Get all the orders from the 'Cat_Ordenes' table
                 var orders = await _context.Cat_Ordenes.ToListAsync();
+
+                if (orders == null)
+                {
+                    return NotFound();
+                }
+
                 return Ok(orders);
             }
             catch (Exception e)
