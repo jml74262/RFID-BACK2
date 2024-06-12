@@ -30,5 +30,7 @@ namespace PrinterBackEnd.Models.Dto.RFIDLabel
         public int Status { get; set; }
         [Required]
         public string UOM { get; set; }
+        [Required]
+        public DateTime Fecha { get; set; }
     }
 }

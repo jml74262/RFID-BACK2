@@ -153,7 +153,6 @@ public class PrinterController : ControllerBase
         {
             CultureInfo cultureInfo = new CultureInfo("es-MX");
 
-            var date = DateTime.Now.ToString("dd-MM-yy", cultureInfo);
 
             // Crear un nuevo objeto 'ProdEtiquetasRFID'
             var postRFIDLabel = new ProdEtiquetasRFID
@@ -172,9 +171,13 @@ public class PrinterController : ControllerBase
                 Orden = postRFIDLabeldto.Orden,
                 RFID = postRFIDLabeldto.RFID,
                 Status = postRFIDLabeldto.Status,
-                UOM = postRFIDLabeldto.UOM
+                UOM = postRFIDLabeldto.UOM,
+                Fecha = postRFIDLabeldto.Fecha
 
             };
+
+            var date = postRFIDLabel.Fecha.ToString("dd-MM-yy", cultureInfo);
+
 
             // Agregar el objeto 'ProdEtiquetasRFID' a la tabla 'ProdEtiquetasRFID'
             _context.ProdEtiquetasRFID.Add(postRFIDLabel);
@@ -268,7 +271,7 @@ public class PrinterController : ControllerBase
         {
             CultureInfo cultureInfo = new CultureInfo("es-MX");
 
-            var date = DateTime.Now.ToString("dd-MM-yy", cultureInfo);
+            var date = postRFIDLabeldto.Fecha.ToString("dd-MM-yy", cultureInfo);
 
             // Crear la cadena de comando SATO usando los valores del DTO
             string stringResult = $@"
@@ -326,7 +329,7 @@ public class PrinterController : ControllerBase
             ^FO285,650^GB580,150,6^FS // 8:1
             ^FO300,710^A0N,30,30^FD{postRFIDLabeldto.Orden}^FS
             ^FO40,795^GB250,65,6^FS // 9:1
-            ^FO60,815^A0N,30,27^FDFECHA: {date}^FS
+            ^FO60,815^A0N,30,27^FDFECHA: 11-06-2024^FS
             ^FO285,795^GB580,65,6^FS // 9:1
             ^FO300,815^A0N,30,27^FDREVISION: 01^FS
             ^RFW,H,1,8,4^FD{postRFIDLabeldto.RFID}^FS
@@ -343,6 +346,60 @@ public class PrinterController : ControllerBase
             {
                 return StatusCode(500, "Failed to send the command to the printer.");
             }
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while saving the label data or sending the SATO command.");
+            return StatusCode(500, $"An error occurred while saving the label data or sending the SATO command: {ex.Message}");
+        }
+    }
+
+    // POST METHOD TO PRINT ProdExtrasDestiny LABEL
+    [HttpPost("SendSATOCommandProdExtrasDestiny")]
+    public async Task<IActionResult> SendSATOCommandProdExtrasDestiny(PostDestinyLabelDto postDestinyLabelDto)
+    {
+        try
+        {
+            CultureInfo cultureInfo = new CultureInfo("es-MX");
+
+            var date = DateTime.Now.ToString("dd-MM-yy", cultureInfo);
+
+            // Crear un nuevo objeto 'ProdExtrasDestiny'
+            var postRFIDLabel = new ProdExtrasDestiny
+            {
+                prodEtiquetaRFID = new ProdEtiquetasRFID
+                {
+                    Area = postDestinyLabelDto.Area,
+                    ClaveProducto = postDestinyLabelDto.ClaveProducto,
+                    NombreProducto = postDestinyLabelDto.NombreProducto,
+                    ClaveOperador = postDestinyLabelDto.ClaveOperador,
+                    Operador = postDestinyLabelDto.Operador,
+                    Turno = postDestinyLabelDto.Turno,
+                    PesoTarima = postDestinyLabelDto.PesoTarima,
+                    PesoBruto = postDestinyLabelDto.PesoBruto,
+                    PesoNeto = postDestinyLabelDto.PesoNeto,
+                    Piezas = postDestinyLabelDto.Piezas,
+                    Trazabilidad = postDestinyLabelDto.Trazabilidad,
+                    Orden = postDestinyLabelDto.Orden,
+                    RFID = postDestinyLabelDto.RFID,
+                    Status = postDestinyLabelDto.Status,
+                    UOM = postDestinyLabelDto.postExtraDestinyDto.UOM
+                },
+                ShippingUnits = postDestinyLabelDto.postExtraDestinyDto.ShippingUnits,
+                UOM = postDestinyLabelDto.postExtraDestinyDto.UOM,
+                InventoryLot = postDestinyLabelDto.postExtraDestinyDto.InventoryLot,
+                IndividualUnits = postDestinyLabelDto.postExtraDestinyDto.IndividualUnits,
+                PalletId = postDestinyLabelDto.postExtraDestinyDto.PalletId,
+                CustomerPo = postDestinyLabelDto.postExtraDestinyDto.CustomerPo,
+                TotalUnits = postDestinyLabelDto.postExtraDestinyDto.TotalUnits,
+                ProductDescription = postDestinyLabelDto.postExtraDestinyDto.ProductDescription,
+                ItemNumber = postDestinyLabelDto.postExtraDestinyDto.ItemNumber
+            };
+
+            // Agregar el objeto 'ProdExtrasDestiny' a la tabla 'ProdExtrasDestiny'
+            _context.ProdExtrasDestiny.Add(postRFIDLabel);
+            await _context.SaveChangesAsync();
+            return Ok("Command sent successfully.");
         }
         catch (Exception ex)
         {
