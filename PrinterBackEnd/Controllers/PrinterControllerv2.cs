@@ -172,6 +172,8 @@ public class PrinterController : ControllerBase
                 Orden = postRFIDLabeldto.Orden,
                 RFID = postRFIDLabeldto.RFID,
                 Status = postRFIDLabeldto.Status,
+                UOM = postRFIDLabeldto.UOM
+
             };
 
             // Agregar el objeto 'ProdEtiquetasRFID' a la tabla 'ProdEtiquetasRFID'
@@ -222,7 +224,7 @@ public class PrinterController : ControllerBase
             ^FO300,470^A0N,30,30^FD{postRFIDLabeldto.PesoTarima}^FS
             ^FO535,435^GB665,100,6^FS // 6:3-4
             ^FO535,435^GB330,100,6^FS // 6:3
-            ^FO550,470^A0N,30,27^FD#PIEZAS^FS
+            ^FO550,470^A0N,30,27^FD{postRFIDLabeldto.UOM}^FS
             ^FO880,470^A0N,30,27^FD{postRFIDLabeldto.Piezas}^FS
             ^FO40,530^GB250,125,6^FS // 7:1
             ^FO60,565^A0N,30,27^FDCODIGO DE^FS
@@ -312,7 +314,7 @@ public class PrinterController : ControllerBase
             ^FO300,470^A0N,30,30^FD{postRFIDLabeldto.PesoTarima}^FS
             ^FO535,435^GB665,100,6^FS // 6:3-4
             ^FO535,435^GB330,100,6^FS // 6:3
-            ^FO550,470^A0N,30,27^FD#PIEZAS^FS
+            ^FO550,470^A0N,30,27^FD{postRFIDLabeldto.UOM}^FS
             ^FO880,470^A0N,30,27^FD{postRFIDLabeldto.Piezas}^FS
             ^FO40,530^GB250,125,6^FS // 7:1
             ^FO60,565^A0N,30,27^FDCODIGO DE^FS

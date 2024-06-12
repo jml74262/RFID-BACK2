@@ -80,6 +80,7 @@
         public string Orden { get; set; }
         public string RFID { get; set; }
         public int Status { get; set; }
+        public string UOM { get; set; }
     }
 
     public class UOMs
