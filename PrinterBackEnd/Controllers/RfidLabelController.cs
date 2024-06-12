@@ -24,6 +24,15 @@ namespace PrinterBackEnd.Controllers
             try
             {
                 var rfidLabels = await _context.ProdEtiquetasRFID.ToListAsync();
+
+                // Put "" if UOM is null
+                foreach (var rfidLabel in rfidLabels)
+                {
+                    if (rfidLabel.UOM == null)
+                    {
+                        rfidLabel.UOM = "";
+                    }
+                }
                 return Ok(rfidLabels);
             }
             catch (Exception ex)
@@ -55,6 +64,7 @@ namespace PrinterBackEnd.Controllers
                     Orden = postRFIDLabeldto.Orden,
                     RFID = postRFIDLabeldto.RFID,
                     Status = postRFIDLabeldto.Status,
+
                 };
 
                 // Add the 'ProdEtiquetasRFID' object to the 'ProdEtiquetasRFID' table
