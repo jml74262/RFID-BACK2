@@ -241,7 +241,7 @@ public class PrinterController : ControllerBase
             ^FO40,795^GB250,65,6^FS // 9:1
             ^FO60,815^A0N,30,27^FDFECHA:11-06-2024^FS
             ^FO285,795^GB580,65,6^FS // 9:1
-            ^FO300,815^A0N,30,27^FDREVISION: 01^FS
+            ^FO300,815^A0N,27,27^FDREVISION: 01^FS
             ^RFW,H,1,8,4^FD{postRFIDLabeldto.RFID}^FS
             ^FO900,550^BQN,2,4^FDQA^FD000{postRFIDLabeldto.Trazabilidad} - OT y/o lote: {postRFIDLabeldto.Orden}, Producto: {postRFIDLabeldto.ClaveProducto} - {postRFIDLabeldto.NombreProducto}, Clave Producto: {postRFIDLabeldto.ClaveProducto}, Peso bruto: {postRFIDLabeldto.PesoBruto}, Peso neto: {postRFIDLabeldto.PesoNeto}, Peso Tarima: {postRFIDLabeldto.PesoTarima}, #Piezas (rollos, bultos, cajas): {postRFIDLabeldto.Piezas}, Área: {postRFIDLabeldto.Area}, Fecha: {date}, Operador: {postRFIDLabeldto.Operador}, Turno: {postRFIDLabeldto.Turno}^FS
             ^XZ";
@@ -331,7 +331,7 @@ public class PrinterController : ControllerBase
             ^FO40,795^GB250,65,6^FS // 9:1
             ^FO60,815^A0N,30,27^FDFECHA: 11-06-2024^FS
             ^FO285,795^GB580,65,6^FS // 9:1
-            ^FO300,815^A0N,30,27^FDREVISION: 01^FS
+            ^FO300,815^A0N,27,27^FDREVISION: 01^FS
             ^RFW,H,1,8,4^FD{postRFIDLabeldto.RFID}^FS
 ^FO900,550^BQN,2,4^FDQA^FD000{postRFIDLabeldto.Trazabilidad} - OT y/o lote: {postRFIDLabeldto.Orden}, Producto: {postRFIDLabeldto.ClaveProducto} - {postRFIDLabeldto.NombreProducto}, Clave Producto: {postRFIDLabeldto.ClaveProducto}, Peso bruto: {postRFIDLabeldto.PesoBruto}, Peso neto: {postRFIDLabeldto.PesoNeto}, Peso Tarima: {postRFIDLabeldto.PesoTarima}, #Piezas (rollos, bultos, cajas): {postRFIDLabeldto.Piezas}, Área: {postRFIDLabeldto.Area}, Fecha: {date}, Operador: {postRFIDLabeldto.Operador}, Turno: {postRFIDLabeldto.Turno}^FS
             ^XZ";
