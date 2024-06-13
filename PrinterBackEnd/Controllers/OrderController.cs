@@ -31,7 +31,7 @@ namespace PrinterBackEnd.Controllers
                     {
                         Id = x.Id,
                         //parse order number to string, if null return empty string
-                        Orden = x.Orden ?? 0,
+                        Orden = x.Pedido ?? 0,
                     })
                     .ToListAsync();
                 return Ok(order);
