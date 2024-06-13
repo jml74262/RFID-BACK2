@@ -239,7 +239,7 @@ public class PrinterController : ControllerBase
             ^FO285,650^GB580,150,6^FS // 8:1
             ^FO300,710^A0N,30,30^FD{postRFIDLabeldto.Orden}^FS
             ^FO40,795^GB250,65,6^FS // 9:1
-            ^FO60,815^A0N,30,27^FDFECHA: 11-06-2024^FS
+            ^FO60,815^A0N,30,27^FDFECHA:11-06-2024^FS
             ^FO285,795^GB580,65,6^FS // 9:1
             ^FO300,815^A0N,30,27^FDREVISION: 01^FS
             ^RFW,H,1,8,4^FD{postRFIDLabeldto.RFID}^FS
