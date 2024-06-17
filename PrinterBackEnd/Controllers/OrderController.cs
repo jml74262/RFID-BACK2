@@ -32,7 +32,10 @@ namespace PrinterBackEnd.Controllers
                         //parse the id from string to int
                         Id = x.Id,
                         //parse order number to string, if null return empty string
-                        Orden = x.Orden ?? 0
+                        Orden = x.Orden ?? 0,
+                        ClaveProducto = x.ClaveProducto ?? "",
+                        Producto = x.Producto ?? "",
+
                     })
                     .ToListAsync();
                 return Ok(order);
