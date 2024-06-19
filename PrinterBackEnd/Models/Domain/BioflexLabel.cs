@@ -106,15 +106,16 @@
     public class ProdExtrasQuality
     {
         public int Id { get; set; }
-        public ProdEtiquetasRFID prodEtiquetaRFID { get; set; }
-        public string UOM { get; set; }
-        public CatMaquina catMaquina { get; set; }
+        public int prodEtiquetaRFID { get; set; }
         public int IndividualUnits { get; set; }
+        public string ItemDescription { get; set; }
         public string ItemNumber { get; set; }
         public int TotalUnits { get; set; }
         public int ShippingUnits { get; set; }
         public string InventoryLot { get; set; }
         public string OT { get; set; }
+        public string Customer { get; set; }
+        public string Traceability { get; set; }
     }
 
 
@@ -124,4 +125,13 @@
         public string Tarima { get; set; }
         public int MaxId { get; set; }
     }
+
+    //public class vwInfoExtraDestiny
+    //{
+    //    public int Pedido { get; set; }
+    //    public string CardName { get; set; }
+    //    public string U_PO1 { get; set; }
+    //    public string U_PO2 { get; set; }
+    //    public string U_Pall
+    //}
 }

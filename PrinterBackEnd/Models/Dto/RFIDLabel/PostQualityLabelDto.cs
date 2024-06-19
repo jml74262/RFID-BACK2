@@ -1,4 +1,6 @@
-﻿namespace PrinterBackEnd.Models.Dto.RFIDLabel
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PrinterBackEnd.Models.Dto.RFIDLabel
 {
     public class PostQualityLabelDto
     {
@@ -16,20 +18,24 @@
         public string Orden { get; set; }
         public string RFID { get; set; }
         public int Status { get; set; }
-        public PostExtraQualityDto postExtraQualityDto { get; set; }
+        [Required]
+        public DateTime Fecha { get; set; }
+        public PostExtraQualityDto postExtraQuality { get; set; }
     }
 
     public class PostExtraQualityDto
     {
-        public int bioFlexLabelId { get; set; }
-        public string UOM { get; set; }
-        public int CatMaquinaId { get; set; }
+        public int Id { get; set; }
+        public int prodEtiquetasRFIDId { get; set; }
         public int IndividualUnits { get; set; }
+        public string ItemDescription { get; set; }
         public string ItemNumber { get; set; }
         public int TotalUnits { get; set; }
         public int ShippingUnits { get; set; }
         public string InventoryLot { get; set; }
         public string OT { get; set; }
+        public string Customer { get; set; }
+        public string Traceability { get; set; }
         //public string PalletId { get; set; }
         //public string CustomerPo { get; set; }
         //public string ProductDescription { get; set; }
