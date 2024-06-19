@@ -91,7 +91,7 @@
     public class ProdExtrasDestiny
     {
         public int Id { get; set; }
-        public ProdEtiquetasRFID prodEtiquetaRFID { get; set; }
+        public int prodEtiquetaRFIDId { get; set; }
         public int ShippingUnits { get; set; }
         public string UOM { get; set; }
         public string InventoryLot { get; set; }
