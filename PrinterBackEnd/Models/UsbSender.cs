@@ -60,6 +60,9 @@ namespace PrinterBackEnd.Models
 
             var portName = GetPortName(vid, pid, sid);
 
+            //trim the start and end of the port name
+            portName = portName.Trim();
+
             return new UsbInfo[] { new UsbInfo(vid, pid, sid, portName) };
 
             //return new UsbInfo[] { new UsbInfo(vid, pid, sid) };
