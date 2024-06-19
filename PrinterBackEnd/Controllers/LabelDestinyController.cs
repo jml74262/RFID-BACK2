@@ -160,5 +160,20 @@ namespace PrinterBackEnd.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
-    }
+
+        // Get all the registers from VwInfoExtraDestiny
+        [HttpGet("GetInfoExtraDestiny")]
+        public async Task<ActionResult<IEnumerable<vwInfoExtraDestiny>>> GetInfoExtraDestiny()
+        {
+            try
+            {
+                var infoExtraDestiny = await _context.VwInfoExtraDestiny.ToListAsync();
+                return Ok(infoExtraDestiny);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+    }   
 }

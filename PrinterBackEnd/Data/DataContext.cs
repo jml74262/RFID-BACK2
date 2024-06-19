@@ -28,5 +28,7 @@ namespace PrinterBackEnd.Data
         public DbSet<ProdExtrasDestiny> ProdExtrasDestiny { get; set; }
         public DbSet<ProdExtrasQuality> ProdExtrasQuality { get; set; }
         public DbSet<MaxIds> MaxIds { get; set; }
+        public DbSet<vwInfoExtraDestiny> VwInfoExtraDestiny { get;set; }
+        
     }
 }
