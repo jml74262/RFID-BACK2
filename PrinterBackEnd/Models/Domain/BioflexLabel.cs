@@ -1,4 +1,6 @@
-﻿namespace PrinterBackEnd.Models.Domain
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PrinterBackEnd.Models.Domain
 {
     public class CatArea
     {
@@ -128,6 +130,8 @@
 
     public class vwInfoExtraDestiny
     {
+        [Key]
+        public int DocNum { get; set; }
         public int Pedido { get; set; }
         public string CardName { get; set; }
         public string U_PO1 { get; set; }
