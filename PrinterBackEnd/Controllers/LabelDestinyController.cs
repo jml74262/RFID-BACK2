@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PrinterBackEnd.Data;
 using PrinterBackEnd.Models.Domain;
+using PrinterBackEnd.Models.Dto.DestinyLabel;
 using PrinterBackEnd.Models.Dto.RFIDLabel;
 using System.Globalization;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -22,18 +23,54 @@ namespace PrinterBackEnd.Controllers
 
         // Endpoint to get all the Destiny Labels
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProdExtrasDestiny>>> GetDestinyLabels()
+        public async Task<ActionResult<IEnumerable<DestinyLabelResponse>>> GetDestinyLabels()
         {
             try
             {
                 var destinyLabels = await _context.ProdExtrasDestiny.ToListAsync();
-                return Ok(destinyLabels);
+                var destinyLabelResponses = new List<DestinyLabelResponse>();
+
+                foreach (var destinyLabel in destinyLabels)
+                {
+                    var prodEtiquetaRFID = await _context.ProdEtiquetasRFID.FindAsync(destinyLabel.prodEtiquetaRFIDId);
+
+                    if (prodEtiquetaRFID != null)
+                    {
+                        // Fill the response object with the values from the ProdEtiquetasRFID and destinyLabel
+                        var destinyLabelResponse = new DestinyLabelResponse
+                        {
+                            Id = prodEtiquetaRFID.Id,
+                            Area = prodEtiquetaRFID.Area,
+                            Fecha = prodEtiquetaRFID.Fecha,
+                            ClaveProducto = prodEtiquetaRFID.ClaveProducto,
+                            NombreProducto = prodEtiquetaRFID.NombreProducto,
+                            ClaveOperador = prodEtiquetaRFID.ClaveOperador,
+                            Operador = prodEtiquetaRFID.Operador,
+                            Turno = prodEtiquetaRFID.Turno,
+                            PesoTarima = prodEtiquetaRFID.PesoTarima,
+                            PesoBruto = prodEtiquetaRFID.PesoBruto,
+                            PesoNeto = prodEtiquetaRFID.PesoNeto,
+                            Piezas = prodEtiquetaRFID.Piezas,
+                            Trazabilidad = prodEtiquetaRFID.Trazabilidad,
+                            Orden = prodEtiquetaRFID.Orden,
+                            RFID = prodEtiquetaRFID.RFID,
+                            Status = prodEtiquetaRFID.Status,
+                            UOM = destinyLabel.UOM,
+                            ProdExtrasDestiny = destinyLabel
+                        };
+
+                        destinyLabelResponses.Add(destinyLabelResponse);
+                    }
+                }
+
+                return Ok(destinyLabelResponses);
             }
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
         }
+
 
         // Endpoint to create a new Destiny Label
         [HttpPost("PostPrintDestiny")]
