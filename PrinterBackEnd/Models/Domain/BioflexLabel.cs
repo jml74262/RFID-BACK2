@@ -131,18 +131,18 @@ namespace PrinterBackEnd.Models.Domain
     public class vwInfoExtraDestiny
     {
         [Key]
-        public int DocNum { get; set; }
+        public string Id { get; set; }
         public int Pedido { get; set; }
-        public string CardName { get; set; }
-        public string U_PO1 { get; set; }
-        public string U_PO2 { get; set; }
-        public string U_PalletId { get; set; }
-        public string U_CI1 { get; set; }
-        public string ItemCode { get; set; }
-        public string Description { get; set; }
-        public string FrgnName { get; set; }
-        public string U_ItemNo { get; set; }
-        public string U_Medidas { get; set; }
-        public string U_ImpRI { get; set; }
+        public string? Cliente { get; set; }
+        public string? U_PO1 { get; set; }
+        public string? U_PO2 { get; set; }
+        public string? PalletId { get; set; }
+        public string? U_Cl1 { get; set; }
+        public string? Clave { get; set; }
+        public string? Producto { get; set; }
+        public string? FrgnName { get; set; }
+        public string? U_ItemNo { get; set; }
+        public string? U_Medidas { get; set; }
+        public string? U_ImpRl { get; set; }
     }
 }
