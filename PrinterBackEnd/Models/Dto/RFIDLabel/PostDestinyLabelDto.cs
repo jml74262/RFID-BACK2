@@ -25,7 +25,6 @@ namespace PrinterBackEnd.Models.Dto.RFIDLabel
 
     public class PostExtraDestinyDto
     {
-        public int bioFlexLabelId { get; set; }
         public int ShippingUnits { get; set; }
         public string UOM { get; set; }
         public string InventoryLot { get; set; }

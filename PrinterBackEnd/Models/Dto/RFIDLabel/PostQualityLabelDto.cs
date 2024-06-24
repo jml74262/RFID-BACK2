@@ -25,8 +25,6 @@ namespace PrinterBackEnd.Models.Dto.RFIDLabel
 
     public class PostExtraQualityDto
     {
-        public int Id { get; set; }
-        public int prodEtiquetasRFIDId { get; set; }
         public int IndividualUnits { get; set; }
         public string ItemDescription { get; set; }
         public string ItemNumber { get; set; }
