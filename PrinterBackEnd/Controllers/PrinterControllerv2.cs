@@ -221,28 +221,28 @@ public class PrinterController : ControllerBase
             ^FO40,340^GB500,100,6^FS // 5:1
             ^FO60,375^A0N,30,30^FDPESO BRUTO(KG)^FS
             ^FO40,340^GB250,100,6^FS // 5:2
-            ^FO300,375^A0N,30,30^FD{postRFIDLabeldto.PesoBruto}^FS
+            ^FO300,375^A0N,50,50^FD{postRFIDLabeldto.PesoBruto}^FS
             ^FO535,340^GB665,100,6^FS // 5:3-4
             ^FO535,340^GB330,100,6^FS // 5:3
             ^FO550,375^A0N,30,30^FDPESO NETO(KG)^FS
-            ^FO880,375^A0N,30,30^FD{postRFIDLabeldto.PesoNeto}^FS
+            ^FO880,375^A0N,50,50^FD{postRFIDLabeldto.PesoNeto}^FS
             ^FO40,435^GB500,100,6^FS // 6:1
             ^FO60,470^A0N,30,27^FDPESO TARIMA(KG)^FS
             ^FO40,435^GB250,100,6^FS // 6:2
-            ^FO300,470^A0N,30,30^FD{postRFIDLabeldto.PesoTarima}^FS
+            ^FO300,470^A0N,50,50^FD{postRFIDLabeldto.PesoTarima}^FS
             ^FO535,435^GB665,100,6^FS // 6:3-4
             ^FO535,435^GB330,100,6^FS // 6:3
             ^FO550,470^A0N,30,27^FD{postRFIDLabeldto.UOM}^FS
-            ^FO880,470^A0N,30,27^FD{postRFIDLabeldto.Piezas}^FS
+            ^FO880,470^A0N,50,50^FD{postRFIDLabeldto.Piezas}^FS
             ^FO40,530^GB250,125,6^FS // 7:1
             ^FO60,565^A0N,30,27^FDCODIGO DE^FS
             ^FO60,595^A0N,30,27^FDTRAZABILIDAD^FS
             ^FO285,530^GB580,125,6^FS // 7:1
-            ^FO300,595^A0N,30,30^FD{postRFIDLabeldto.Trazabilidad}^FS
+            ^FO300,595^A0N,50,50^FD{postRFIDLabeldto.Trazabilidad}^FS
             ^FO40,650^GB250,150,6^FS // 8:1
             ^FO60,710^A0N,30,27^FDOT Y/O LOTE^FS
             ^FO285,650^GB580,150,6^FS // 8:1
-            ^FO300,710^A0N,30,30^FD{postRFIDLabeldto.Orden}^FS
+            ^FO300,710^A0N,50,50^FD{postRFIDLabeldto.Orden}^FS
             ^FO40,795^GB250,65,6^FS // 9:1
             ^FO60,815^A0N,30,27^FDFECHA:11-06-2024^FS
             ^FO285,795^GB580,65,6^FS // 9:1
@@ -311,28 +311,28 @@ public class PrinterController : ControllerBase
             ^FO40,340^GB500,100,6^FS // 5:1
             ^FO60,375^A0N,30,30^FDPESO BRUTO(KG)^FS
             ^FO40,340^GB250,100,6^FS // 5:2
-            ^FO300,375^A0N,30,30^FD{postRFIDLabeldto.PesoBruto}^FS
+            ^FO300,375^A0N,50,50^FD{postRFIDLabeldto.PesoBruto}^FS
             ^FO535,340^GB665,100,6^FS // 5:3-4
             ^FO535,340^GB330,100,6^FS // 5:3
             ^FO550,375^A0N,30,30^FDPESO NETO(KG)^FS
-            ^FO880,375^A0N,30,30^FD{postRFIDLabeldto.PesoNeto}^FS
+            ^FO880,375^A0N,50,50^FD{postRFIDLabeldto.PesoNeto}^FS
             ^FO40,435^GB500,100,6^FS // 6:1
             ^FO60,470^A0N,30,27^FDPESO TARIMA(KG)^FS
             ^FO40,435^GB250,100,6^FS // 6:2
-            ^FO300,470^A0N,30,30^FD{postRFIDLabeldto.PesoTarima}^FS
+            ^FO300,470^A0N,50,50^FD{postRFIDLabeldto.PesoTarima}^FS
             ^FO535,435^GB665,100,6^FS // 6:3-4
             ^FO535,435^GB330,100,6^FS // 6:3
             ^FO550,470^A0N,30,27^FD{postRFIDLabeldto.UOM}^FS
-            ^FO880,470^A0N,30,27^FD{postRFIDLabeldto.Piezas}^FS
+            ^FO880,470^A0N,50,50^FD{postRFIDLabeldto.Piezas}^FS
             ^FO40,530^GB250,125,6^FS // 7:1
             ^FO60,565^A0N,30,27^FDCODIGO DE^FS
             ^FO60,595^A0N,30,27^FDTRAZABILIDAD^FS
             ^FO285,530^GB580,125,6^FS // 7:1
-            ^FO300,595^A0N,30,30^FD{postRFIDLabeldto.Trazabilidad}^FS
+            ^FO300,595^A0N,50,50^FD{postRFIDLabeldto.Trazabilidad}^FS
             ^FO40,650^GB250,150,6^FS // 8:1
             ^FO60,710^A0N,30,27^FDOT Y/O LOTE^FS
             ^FO285,650^GB580,150,6^FS // 8:1
-            ^FO300,710^A0N,30,30^FD{postRFIDLabeldto.Orden}^FS
+            ^FO300,710^A0N,50,50^FD{postRFIDLabeldto.Orden}^FS
             ^FO40,795^GB250,65,6^FS // 9:1
             ^FO60,815^A0N,20,20^FDFECHA: 11-06-2024^FS
             ^FO285,795^GB580,65,6^FS // 9:1

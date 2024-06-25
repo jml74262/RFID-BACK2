@@ -31,7 +31,6 @@ namespace PrinterBackEnd.Models.Dto.RFIDLabel
         public int TotalUnits { get; set; }
         public int ShippingUnits { get; set; }
         public string InventoryLot { get; set; }
-        public string OT { get; set; }
         public string Customer { get; set; }
         public string Traceability { get; set; }
         //public string PalletId { get; set; }
