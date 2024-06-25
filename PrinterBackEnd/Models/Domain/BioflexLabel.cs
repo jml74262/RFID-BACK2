@@ -108,14 +108,13 @@ namespace PrinterBackEnd.Models.Domain
     public class ProdExtrasQuality
     {
         public int Id { get; set; }
-        public int prodEtiquetaRFID { get; set; }
+        public int prodEtiquetaRFIDId { get; set; }
         public int IndividualUnits { get; set; }
         public string ItemDescription { get; set; }
         public string ItemNumber { get; set; }
         public int TotalUnits { get; set; }
         public int ShippingUnits { get; set; }
         public string InventoryLot { get; set; }
-        public string OT { get; set; }
         public string Customer { get; set; }
         public string Traceability { get; set; }
     }

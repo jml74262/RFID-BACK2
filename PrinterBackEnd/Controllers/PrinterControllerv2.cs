@@ -739,14 +739,13 @@ public class PrinterController : ControllerBase
             var postRFIDLabel = new ProdExtrasQuality
             {
                 Id = maxIdQuality.MaxId + 1,
-                prodEtiquetaRFID = prodEtiquetaRFIDId,
+                prodEtiquetaRFIDId = prodEtiquetaRFIDId,
                 IndividualUnits = postQualityLabelDto.postExtraQuality.IndividualUnits,
                 ItemNumber = postQualityLabelDto.postExtraQuality.ItemNumber,
                 ItemDescription = postQualityLabelDto.postExtraQuality.ItemDescription,
                 TotalUnits = postQualityLabelDto.postExtraQuality.TotalUnits,
                 ShippingUnits = postQualityLabelDto.postExtraQuality.ShippingUnits,
                 InventoryLot = postQualityLabelDto.postExtraQuality.InventoryLot,
-                OT = postQualityLabelDto.postExtraQuality.OT,
                 Customer = postQualityLabelDto.postExtraQuality.Customer,
                 Traceability = postQualityLabelDto.postExtraQuality.Traceability,
             };
@@ -860,14 +859,13 @@ public class PrinterController : ControllerBase
             var postRFIDLabel = new ProdExtrasQuality
             {
                 Id = maxIdQuality.MaxId + 1,
-                prodEtiquetaRFID = prodEtiquetaRFIDId,
+                prodEtiquetaRFIDId = prodEtiquetaRFIDId,
                 IndividualUnits = postQualityLabelDto.postExtraQuality.IndividualUnits,
                 ItemNumber = postQualityLabelDto.postExtraQuality.ItemNumber,
                 ItemDescription = postQualityLabelDto.postExtraQuality.ItemDescription,
                 TotalUnits = postQualityLabelDto.postExtraQuality.TotalUnits,
                 ShippingUnits = postQualityLabelDto.postExtraQuality.ShippingUnits,
                 InventoryLot = postQualityLabelDto.postExtraQuality.InventoryLot,
-                OT = postQualityLabelDto.postExtraQuality.OT,
                 Customer = postQualityLabelDto.postExtraQuality.Customer,
                 Traceability = postQualityLabelDto.postExtraQuality.Traceability,
             };
@@ -932,14 +930,13 @@ public class PrinterController : ControllerBase
             var postRFIDLabel = new ProdExtrasQuality
             {
                 Id = maxIdQuality.MaxId + 1,
-                prodEtiquetaRFID = prodEtiquetaRFIDId,
+                prodEtiquetaRFIDId = prodEtiquetaRFIDId,
                 IndividualUnits = postQualityLabelDto.postExtraQuality.IndividualUnits,
                 ItemNumber = postQualityLabelDto.postExtraQuality.ItemNumber,
                 ItemDescription = postQualityLabelDto.postExtraQuality.ItemDescription,
                 TotalUnits = postQualityLabelDto.postExtraQuality.TotalUnits,
                 ShippingUnits = postQualityLabelDto.postExtraQuality.ShippingUnits,
                 InventoryLot = postQualityLabelDto.postExtraQuality.InventoryLot,
-                OT = postQualityLabelDto.postExtraQuality.OT,
                 Customer = postQualityLabelDto.postExtraQuality.Customer,
                 Traceability = postQualityLabelDto.postExtraQuality.Traceability,
             };
