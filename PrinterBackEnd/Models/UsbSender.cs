@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
@@ -111,6 +112,45 @@ namespace PrinterBackEnd.Models
             }
 
             InfoConx infoConx = list.FirstOrDefault(x => x.Online && x.PortName.Contains("USB"));
+            if (infoConx != null)
+            {
+                SendRawData(infoConx.DriverName, cmddata);
+                return true;
+            }
+            return false;
+        }
+
+        public static bool SendSATOCommand(string command, string ip, int port)
+        {
+            try
+            {
+                byte[] cmddata = UtilsPersonalized.StringToByteArray(ControlCharReplace(command));
+                using (var client = new TcpClient(ip, port))
+                using (var stream = client.GetStream())
+                {
+                    stream.Write(cmddata, 0, cmddata.Length);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error sending command to printer: {ex.Message}");
+                return false;
+            }
+        }
+
+        // Create a method that gets SATODrives, selects the one where InfoConx.Online is true and sends the command to the printer with portName = 172.16.21.131
+        public static bool SendSATOCommand(string command, string portName)
+        {
+            byte[] cmddata = UtilsPersonalized.StringToByteArray(ControlCharReplace(command));
+            List<InfoConx> list = GetSATODrivers();
+            // If list is empty, return false
+            if (list.Count == 0)
+            {
+                return false;
+            }
+
+            InfoConx infoConx = list.FirstOrDefault(x => x.Online && x.PortName.Contains(portName));
             if (infoConx != null)
             {
                 SendRawData(infoConx.DriverName, cmddata);
