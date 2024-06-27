@@ -375,7 +375,7 @@ public class PrinterController : ControllerBase
             ^XZ";
 
             // Enviar el comando a la impresora solo si el guardado es exitoso
-            bool result = USBSender.SendSATOCommand(stringResult, "172.16.21.158", 9100);
+            bool result = USBSender.SendSATOCommand(stringResult, "172.16.20.57", 9100);
             if (result)
             {
                 return Ok("Command sent successfully.");
