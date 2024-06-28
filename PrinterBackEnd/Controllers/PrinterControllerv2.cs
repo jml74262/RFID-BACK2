@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Extensions;
 using PrinterBackEnd.Data;
 using PrinterBackEnd.Models;
 using PrinterBackEnd.Models.Domain;
@@ -145,6 +146,37 @@ public class PrinterController : ControllerBase
         }
     }
 
+    public static string ReplaceSpecialCharacters(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+            return input;
+
+        string normalizedString = input.Normalize(NormalizationForm.FormD);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (char c in normalizedString)
+        {
+            UnicodeCategory unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+            if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+            {
+                if (c == 'ñ')
+                {
+                    stringBuilder.Append('n');
+                }
+                else if (c == 'Ñ')
+                {
+                    stringBuilder.Append('N');
+                }
+                else
+                {
+                    stringBuilder.Append(c);
+                }
+            }
+        }
+
+        return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
+    }
+
     // Post method to send command to SATO printer
     [HttpPost("SendSATOCommand")]
     public async Task<IActionResult> SendSATOCommand(PostRFIDLabeldto postRFIDLabeldto)
@@ -187,6 +219,12 @@ public class PrinterController : ControllerBase
                 _context.ProdEtiquetasRFID.Add(postRFIDLabel);
                 await _context.SaveChangesAsync();
             }
+
+            // Process strings to replace special characters
+            postRFIDLabeldto.Area = ReplaceSpecialCharacters(postRFIDLabeldto.Area);
+            postRFIDLabeldto.ClaveProducto = ReplaceSpecialCharacters(postRFIDLabeldto.ClaveProducto);
+            postRFIDLabeldto.NombreProducto = ReplaceSpecialCharacters(postRFIDLabeldto.NombreProducto);
+            postRFIDLabeldto.Operador = ReplaceSpecialCharacters(postRFIDLabeldto.Operador);
 
             // Crear la cadena de comando SATO usando los valores del DTO
             string stringResult = $@"
@@ -311,6 +349,12 @@ public class PrinterController : ControllerBase
                 await _context.SaveChangesAsync();
             }
 
+            // Process strings to replace special characters
+            postRFIDLabeldto.Area = ReplaceSpecialCharacters(postRFIDLabeldto.Area);
+            postRFIDLabeldto.ClaveProducto = ReplaceSpecialCharacters(postRFIDLabeldto.ClaveProducto);
+            postRFIDLabeldto.NombreProducto = ReplaceSpecialCharacters(postRFIDLabeldto.NombreProducto);
+            postRFIDLabeldto.Operador = ReplaceSpecialCharacters(postRFIDLabeldto.Operador);
+
             // Crear la cadena de comando SATO usando los valores del DTO
             string stringResult = $@"
             ^XA
@@ -434,6 +478,11 @@ public class PrinterController : ControllerBase
                 await _context.SaveChangesAsync();
             }
 
+            postRFIDLabeldto.Area = ReplaceSpecialCharacters(postRFIDLabeldto.Area);
+            postRFIDLabeldto.ClaveProducto = ReplaceSpecialCharacters(postRFIDLabeldto.ClaveProducto);
+            postRFIDLabeldto.NombreProducto = ReplaceSpecialCharacters(postRFIDLabeldto.NombreProducto);
+            postRFIDLabeldto.Operador = ReplaceSpecialCharacters(postRFIDLabeldto.Operador);
+
             // Crear la cadena de comando SATO usando los valores del DTO
             string stringResult = $@"
             ^XA
@@ -523,6 +572,11 @@ public class PrinterController : ControllerBase
             CultureInfo cultureInfo = new CultureInfo("es-MX");
 
             var date = postRFIDLabeldto.Fecha.ToString("dd-MM-yy", cultureInfo);
+
+            postRFIDLabeldto.Area = ReplaceSpecialCharacters(postRFIDLabeldto.Area);
+            postRFIDLabeldto.ClaveProducto = ReplaceSpecialCharacters(postRFIDLabeldto.ClaveProducto);
+            postRFIDLabeldto.NombreProducto = ReplaceSpecialCharacters(postRFIDLabeldto.NombreProducto);
+            postRFIDLabeldto.Operador = ReplaceSpecialCharacters(postRFIDLabeldto.Operador);
 
             // Crear la cadena de comando SATO usando los valores del DTO
             string stringResult = $@"
@@ -622,6 +676,12 @@ public class PrinterController : ControllerBase
             {
                 return NotFound("No se encontró el registro con Tarima = DESTINY");
             }
+
+            // Normalizar los valores del DTO
+            postDestinyLabelDto.Area = ReplaceSpecialCharacters(postDestinyLabelDto.Area);
+            postDestinyLabelDto.ClaveProducto = ReplaceSpecialCharacters(postDestinyLabelDto.ClaveProducto);
+            postDestinyLabelDto.NombreProducto = ReplaceSpecialCharacters(postDestinyLabelDto.NombreProducto);
+            postDestinyLabelDto.Operador = ReplaceSpecialCharacters(postDestinyLabelDto.Operador);
 
             // Crear objeto ProdEtiquetasRFID
             var prodEtiquetaBioflex = new ProdEtiquetasRFID
@@ -1002,6 +1062,14 @@ public class PrinterController : ControllerBase
             _context.ProdExtrasQuality.Add(postRFIDLabel);
 
             await _context.SaveChangesAsync();
+
+            // Normaliza los valores del DTO
+            postQualityLabelDto.Area = ReplaceSpecialCharacters(postQualityLabelDto.Area);
+            postQualityLabelDto.ClaveProducto = ReplaceSpecialCharacters(postQualityLabelDto.ClaveProducto);
+            postQualityLabelDto.NombreProducto = ReplaceSpecialCharacters(postQualityLabelDto.NombreProducto);
+            postQualityLabelDto.Operador = ReplaceSpecialCharacters(postQualityLabelDto.Operador);
+            postRFIDLabel.Customer = ReplaceSpecialCharacters(postRFIDLabel.Customer);
+            postRFIDLabel.ItemDescription = ReplaceSpecialCharacters(postRFIDLabel.ItemDescription);
 
             // Generar y enviar el comando SATO
             string stringResult = $@"
