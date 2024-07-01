@@ -19,7 +19,7 @@ namespace PrinterBackEnd.Models.Dto.RFIDLabel
         public float PesoTarima { get; set; } = 0;
         public float PesoBruto { get; set; } = 0;
         public float PesoNeto { get; set; } = 0;
-        public int Piezas { get; set; } = 0;
+        public float Piezas { get; set; } = 0;
         [Required]
         public string Trazabilidad { get; set; }
         [Required]
